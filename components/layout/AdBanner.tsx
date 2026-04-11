@@ -28,7 +28,7 @@ export default function AdBanner({ slotId, format, className }: AdBannerProps) {
       const w = window as Window & { adsbygoogle?: unknown[] }
       w.adsbygoogle = w.adsbygoogle ?? []
       w.adsbygoogle.push({})
-    } catch (_) {}
+    } catch {}
   }, [])
 
   const isPlaceholder = !PUBLISHER_ID || PUBLISHER_ID === 'ca-pub-XXXXXXXXXX'
