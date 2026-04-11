@@ -41,7 +41,7 @@ export const categories: Category[] = [
     name: 'Clásicos',
     description: 'Juegos eternos',
     icon: '🕹️',
-    color: '#00D9FF',
+    color: '#FF9500',
   },
 ]
 
