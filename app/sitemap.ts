@@ -30,6 +30,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly' as const,
       priority: 0.7,
     },
+    { url: `${SITE_URL}/privacidad`, lastModified: now, changeFrequency: 'yearly' as const, priority: 0.3 },
+    { url: `${SITE_URL}/terminos`, lastModified: now, changeFrequency: 'yearly' as const, priority: 0.3 },
+    { url: `${SITE_URL}/contacto`, lastModified: now, changeFrequency: 'yearly' as const, priority: 0.4 },
     ...gameUrls,
     ...categoryUrls,
   ]
