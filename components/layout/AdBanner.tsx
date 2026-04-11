@@ -26,9 +26,8 @@ export default function AdBanner({ slotId, format, className }: AdBannerProps) {
   useEffect(() => {
     try {
       const w = window as Window & { adsbygoogle?: unknown[] }
-      if (w.adsbygoogle) {
-        w.adsbygoogle.push({})
-      }
+      w.adsbygoogle = w.adsbygoogle ?? []
+      w.adsbygoogle.push({})
     } catch (_) {}
   }, [])
 
@@ -37,7 +36,8 @@ export default function AdBanner({ slotId, format, className }: AdBannerProps) {
   if (isPlaceholder) {
     return (
       <div
-        className={`bg-[#1F2937]/50 border border-dashed border-gray-700 flex items-center justify-center text-gray-600 text-xs rounded ${className ?? ''}`}
+        style={formatStyles[format]}
+        className={['bg-[#1F2937]/50 border border-dashed border-gray-700 flex items-center justify-center text-gray-600 text-xs rounded', className].filter(Boolean).join(' ')}
       >
         [Ad — {format}]
       </div>
