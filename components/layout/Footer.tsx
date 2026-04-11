@@ -21,7 +21,7 @@ export default function Footer() {
                   href={`/categorias/${cat}`}
                   className="hover:text-[#00D9FF] transition-colors capitalize"
                 >
-                  {cat.replace('-', ' ')}
+                  {cat.replaceAll('-', ' ')}
                 </Link>
               </li>
             ))}
