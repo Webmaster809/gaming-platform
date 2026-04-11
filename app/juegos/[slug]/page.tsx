@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function GamePage({ params }: Props) {
   const { slug } = await params
   const game = getGameBySlug(slug)
-  if (!game) notFound()
+  if (!game) return notFound()
 
   const jsonLd = generateGameJsonLd(game)
 
