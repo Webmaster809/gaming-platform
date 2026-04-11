@@ -24,6 +24,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: SITE_URL, lastModified: now, changeFrequency: 'daily' as const, priority: 1.0 },
     { url: `${SITE_URL}/juegos`, lastModified: now, changeFrequency: 'daily' as const, priority: 0.9 },
+    {
+      url: `${SITE_URL}/categorias`,
+      lastModified: now,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    },
     ...gameUrls,
     ...categoryUrls,
   ]
