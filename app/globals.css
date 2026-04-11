@@ -22,7 +22,6 @@ body {
   background-color: var(--bg);
   color: white;
   font-family: 'Inter', sans-serif;
-  cursor: none;
 }
 
 .neon-cursor {
