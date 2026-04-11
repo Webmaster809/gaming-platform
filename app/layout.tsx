@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   description: 'Juega los mejores juegos online gratis. Sin descargas, sin registro. FPS, Battle Royale, Puzzle y más.',
   keywords: 'juegos online gratis, multiplayer browser games, free online games, unblocked games',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://playhub.com'),
+  manifest: '/manifest.json',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
