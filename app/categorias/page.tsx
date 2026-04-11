@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 export default function CategoriesPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <h1 className="font-orbitron text-3xl font-black text-white mb-2">
-        <span className="text-[#00D9FF]">Categorías</span>
+      <h1 className="font-orbitron text-3xl font-black text-[#00D9FF] mb-2">
+        Categorías
       </h1>
       <p className="text-gray-400 mb-8">{categories.length} categorías disponibles</p>
 
