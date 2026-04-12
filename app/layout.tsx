@@ -1,8 +1,24 @@
 import type { Metadata } from 'next'
+import { Orbitron, Inter } from 'next/font/google'
 import Script from 'next/script'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import CookieBanner from '@/components/layout/CookieBanner'
 import './globals.css'
+
+const orbitron = Orbitron({
+  subsets: ['latin'],
+  weight: ['400', '700', '900'],
+  variable: '--font-orbitron',
+  display: 'swap',
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-inter',
+  display: 'swap',
+})
 
 const SITE_NAME = process.env.NEXT_PUBLIC_SITE_NAME ?? 'PlayHub'
 const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
@@ -21,11 +37,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${orbitron.variable} ${inter.variable}`}>
       <body className="min-h-screen flex flex-col">
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <CookieBanner />
         {GA_ID && GA_ID !== 'G-XXXXXXXXXX' && (
           <>
             <Script

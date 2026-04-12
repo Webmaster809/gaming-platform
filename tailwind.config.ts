@@ -19,8 +19,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        orbitron: ['Orbitron', 'monospace'],
-        inter: ['Inter', 'sans-serif'],
+        orbitron: ['var(--font-orbitron)', 'monospace'],
+        inter: ['var(--font-inter)', 'sans-serif'],
       },
       animation: {
         'neon-pulse': 'neonPulse 2s ease-in-out infinite',

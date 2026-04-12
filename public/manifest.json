@@ -1,12 +1,14 @@
 {
   "name": "PlayHub",
   "short_name": "PlayHub",
-  "description": "Juegos online gratis en el navegador",
+  "description": "Free online games in your browser",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0A0E27",
   "theme_color": "#00D9FF",
   "icons": [
-    { "src": "/favicon.ico", "sizes": "any", "type": "image/x-icon" }
+    { "src": "/favicon.ico", "sizes": "any", "type": "image/x-icon" },
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
   ]
 }

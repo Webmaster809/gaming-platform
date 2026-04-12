@@ -30,7 +30,7 @@ export default function GameCard({ game, index = 0 }: GameCardProps) {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               onError={(e) => {
                 const target = e.target as HTMLImageElement
-                target.src = '/placeholder-game.jpg'
+                target.src = '/placeholder-game.svg'
               }}
             />
             {game.trending && (
