@@ -17,10 +17,10 @@ export default function FeaturedGames() {
           viewport={{ once: true }}
           className="font-orbitron text-2xl font-bold text-white"
         >
-          🔥 Juegos Destacados
+          🔥 Featured Games
         </motion.h2>
-        <Link href="/juegos" className="text-[#00D9FF] text-sm hover:text-white transition-colors">
-          Ver todos →
+        <Link href="/games" className="text-[#00D9FF] text-sm hover:text-white transition-colors">
+          View all →
         </Link>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

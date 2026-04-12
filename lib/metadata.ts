@@ -15,7 +15,7 @@ export function generateGameMetadata(game: Game): Metadata {
     openGraph: {
       title,
       description,
-      url: `${SITE_URL}/juegos/${game.slug}`,
+      url: `${SITE_URL}/games/${game.slug}`,
       siteName: SITE_NAME,
       images: [{ url: game.thumbnailUrl, width: 1200, height: 630, alt: game.title }],
       type: 'website',
@@ -27,14 +27,14 @@ export function generateGameMetadata(game: Game): Metadata {
       images: [game.thumbnailUrl],
     },
     alternates: {
-      canonical: `${SITE_URL}/juegos/${game.slug}`,
+      canonical: `${SITE_URL}/games/${game.slug}`,
     },
   }
 }
 
 export function generateCategoryMetadata(category: Category): Metadata {
-  const title = `Mejores juegos de ${category.name} gratis online | ${SITE_NAME}`
-  const description = `Juega los mejores juegos de ${category.name} gratis online. Sin descargas, sin registro. ${category.description}.`
+  const title = `Best Free ${category.name} Games Online | ${SITE_NAME}`
+  const description = `Play the best free ${category.name} games online. No downloads, no registration. ${category.description}.`
 
   return {
     title,
@@ -42,7 +42,7 @@ export function generateCategoryMetadata(category: Category): Metadata {
     openGraph: {
       title,
       description,
-      url: `${SITE_URL}/categoria/${category.slug}`,
+      url: `${SITE_URL}/categories/${category.slug}`,
       siteName: SITE_NAME,
       type: 'website',
     },
@@ -54,7 +54,7 @@ export function generateGameJsonLd(game: Game) {
     '@context': 'https://schema.org',
     '@type': 'VideoGame',
     name: game.title,
-    url: `${SITE_URL}/juegos/${game.slug}`,
+    url: `${SITE_URL}/games/${game.slug}`,
     description: game.seoDescription,
     image: game.thumbnailUrl,
     genre: game.category,

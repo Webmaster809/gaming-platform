@@ -48,7 +48,7 @@ export default async function GamePage({ params }: Props) {
 
         <section className="mt-10">
           <h2 className="font-orbitron text-xl font-bold text-white mb-3">
-            Cómo jugar {game.title}
+            How to play {game.title}
           </h2>
           <p className="text-gray-400 leading-relaxed">{game.description}</p>
         </section>

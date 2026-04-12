@@ -21,9 +21,9 @@ export default function Header() {
         </Link>
         <ul className="flex gap-6 text-sm font-medium">
           {[
-            { href: '/', label: 'Inicio' },
-            { href: '/juegos', label: 'Juegos' },
-            { href: '/categorias', label: 'Categorías' },
+            { href: '/', label: 'Home' },
+            { href: '/games', label: 'Games' },
+            { href: '/categories', label: 'Categories' },
           ].map((link) => (
             <li key={link.href}>
               <Link

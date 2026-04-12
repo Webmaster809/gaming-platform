@@ -35,7 +35,7 @@ export default function GameFrame({ game }: { game: Game }) {
           onClick={() => iframeRef.current?.requestFullscreen()}
           className="text-xs text-gray-500 hover:text-[#00D9FF] transition-colors"
         >
-          ⛶ Pantalla completa
+          ⛶ Fullscreen
         </button>
       </div>
     </motion.div>

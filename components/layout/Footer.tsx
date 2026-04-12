@@ -9,16 +9,16 @@ export default function Footer() {
         <div>
           <h3 className="font-orbitron font-bold text-[#00D9FF] mb-3">{SITE_NAME}</h3>
           <p className="text-gray-400 text-sm">
-            La mejor plataforma de juegos online gratuitos. Sin descargas, sin registro.
+            The best platform for free online games. No downloads, no registration.
           </p>
         </div>
         <div>
-          <h4 className="font-semibold text-white mb-3">Categorías</h4>
+          <h4 className="font-semibold text-white mb-3">Categories</h4>
           <ul className="space-y-2 text-sm text-gray-400">
             {['fps', 'battle-royale', 'puzzle', 'social', 'classic'].map((cat) => (
               <li key={cat}>
                 <Link
-                  href={`/categorias/${cat}`}
+                  href={`/categories/${cat}`}
                   className="hover:text-[#00D9FF] transition-colors capitalize"
                 >
                   {cat.replaceAll('-', ' ')}
@@ -30,14 +30,14 @@ export default function Footer() {
         <div>
           <h4 className="font-semibold text-white mb-3">Legal</h4>
           <ul className="space-y-2 text-sm text-gray-400">
-            <li><Link href="/privacidad" className="hover:text-[#00D9FF] transition-colors">Política de Privacidad</Link></li>
-            <li><Link href="/terminos" className="hover:text-[#00D9FF] transition-colors">Términos de Uso</Link></li>
-            <li><Link href="/contacto" className="hover:text-[#00D9FF] transition-colors">Contacto</Link></li>
+            <li><Link href="/privacy" className="hover:text-[#00D9FF] transition-colors">Privacy Policy</Link></li>
+            <li><Link href="/terms" className="hover:text-[#00D9FF] transition-colors">Terms of Use</Link></li>
+            <li><Link href="/contact" className="hover:text-[#00D9FF] transition-colors">Contact</Link></li>
           </ul>
         </div>
       </div>
       <div className="text-center py-4 text-xs text-gray-600 border-t border-[#00D9FF]/5">
-        © {new Date().getFullYear()} {SITE_NAME}. Todos los derechos reservados.
+        © {new Date().getFullYear()} {SITE_NAME}. All rights reserved.
       </div>
     </footer>
   )

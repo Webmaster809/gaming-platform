@@ -38,7 +38,7 @@ export default async function CategoryPage({ params }: Props) {
             {category.name}
           </h1>
         </div>
-        <p className="text-gray-400">{category.description} — {games.length} {games.length === 1 ? 'juego' : 'juegos'}</p>
+        <p className="text-gray-400">{category.description} — {games.length} {games.length === 1 ? 'game' : 'games'}</p>
       </div>
 
       <AdBanner slotId="1357924680" format="banner" className="h-20 mb-6 w-full" />
@@ -51,8 +51,8 @@ export default async function CategoryPage({ params }: Props) {
         </div>
       ) : (
         <div className="text-center py-20 text-gray-500">
-          <p className="text-lg">No hay juegos en esta categoría todavía.</p>
-          <p className="text-sm mt-2">Vuelve pronto — actualizamos cada semana.</p>
+          <p className="text-lg">No games in this category yet.</p>
+          <p className="text-sm mt-2">Check back soon — we update every week.</p>
         </div>
       )}
     </div>

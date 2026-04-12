@@ -8,14 +8,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
 
   const gameUrls = games.map((game) => ({
-    url: `${SITE_URL}/juegos/${game.slug}`,
+    url: `${SITE_URL}/games/${game.slug}`,
     lastModified: now,
     changeFrequency: 'weekly' as const,
     priority: 0.8,
   }))
 
   const categoryUrls = categories.map((cat) => ({
-    url: `${SITE_URL}/categorias/${cat.slug}`,
+    url: `${SITE_URL}/categories/${cat.slug}`,
     lastModified: now,
     changeFrequency: 'weekly' as const,
     priority: 0.6,
@@ -23,16 +23,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: SITE_URL, lastModified: now, changeFrequency: 'daily' as const, priority: 1.0 },
-    { url: `${SITE_URL}/juegos`, lastModified: now, changeFrequency: 'daily' as const, priority: 0.9 },
-    {
-      url: `${SITE_URL}/categorias`,
-      lastModified: now,
-      changeFrequency: 'weekly' as const,
-      priority: 0.7,
-    },
-    { url: `${SITE_URL}/privacidad`, lastModified: now, changeFrequency: 'yearly' as const, priority: 0.3 },
-    { url: `${SITE_URL}/terminos`, lastModified: now, changeFrequency: 'yearly' as const, priority: 0.3 },
-    { url: `${SITE_URL}/contacto`, lastModified: now, changeFrequency: 'yearly' as const, priority: 0.4 },
+    { url: `${SITE_URL}/games`, lastModified: now, changeFrequency: 'daily' as const, priority: 0.9 },
+    { url: `${SITE_URL}/categories`, lastModified: now, changeFrequency: 'weekly' as const, priority: 0.7 },
+    { url: `${SITE_URL}/privacy`, lastModified: now, changeFrequency: 'yearly' as const, priority: 0.3 },
+    { url: `${SITE_URL}/terms`, lastModified: now, changeFrequency: 'yearly' as const, priority: 0.3 },
+    { url: `${SITE_URL}/contact`, lastModified: now, changeFrequency: 'yearly' as const, priority: 0.4 },
     ...gameUrls,
     ...categoryUrls,
   ]

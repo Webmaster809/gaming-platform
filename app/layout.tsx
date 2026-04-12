@@ -10,18 +10,18 @@ const ADSENSE_ID = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID
 
 export const metadata: Metadata = {
   title: {
-    default: `${SITE_NAME} - Juegos Online Gratis`,
+    default: `${SITE_NAME} - Free Online Games`,
     template: `%s | ${SITE_NAME}`,
   },
-  description: 'Juega los mejores juegos online gratis. Sin descargas, sin registro. FPS, Battle Royale, Puzzle y más.',
-  keywords: 'juegos online gratis, multiplayer browser games, free online games, unblocked games',
+  description: 'Play the best free online games. No downloads, no registration. FPS, Battle Royale, Puzzle and more.',
+  keywords: 'free online games, multiplayer browser games, unblocked games, play online',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://playhub.com'),
   manifest: '/manifest.json',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es">
+    <html lang="en">
       <body className="min-h-screen flex flex-col">
         <Header />
         <main className="flex-1">{children}</main>

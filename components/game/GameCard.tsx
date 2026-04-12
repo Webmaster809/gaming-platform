@@ -18,7 +18,7 @@ export default function GameCard({ game, index = 0 }: GameCardProps) {
       transition={{ delay: index * 0.05, duration: 0.3, ease: 'easeOut' }}
       whileHover={{ scale: 1.06 }}
     >
-      <Link href={`/juegos/${game.slug}`} className="block group">
+      <Link href={`/games/${game.slug}`} className="block group">
         <div className="relative rounded-xl overflow-hidden bg-[#1F2937] border border-[#00D9FF]/10 transition-all duration-200 group-hover:border-[#00D9FF]/60 group-hover:shadow-[0_0_30px_rgba(0,217,255,0.25)]">
           {/* Thumbnail */}
           <div className="relative aspect-video bg-[#0A0E27]">
@@ -41,7 +41,7 @@ export default function GameCard({ game, index = 0 }: GameCardProps) {
             <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E27] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             <div className="absolute bottom-2 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
               <span className="bg-[#00FF41] text-black text-xs font-bold px-4 py-1 rounded-full">
-                ▶ JUGAR
+                ▶ PLAY
               </span>
             </div>
           </div>

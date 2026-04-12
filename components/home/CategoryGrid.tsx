@@ -13,7 +13,7 @@ export default function CategoryGrid() {
         viewport={{ once: true }}
         className="font-orbitron text-2xl font-bold text-white mb-6"
       >
-        Categorías
+        Categories
       </motion.h2>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         {categories.map((cat, i) => (
@@ -26,7 +26,7 @@ export default function CategoryGrid() {
             whileHover={{ scale: 1.05 }}
           >
             <Link
-              href={`/categorias/${cat.slug}`}
+              href={`/categories/${cat.slug}`}
               className="block p-4 rounded-xl bg-[#1F2937] border border-transparent hover:border-[#00D9FF]/40 transition-all text-center group"
             >
               <div className="text-3xl mb-2">{cat.icon}</div>

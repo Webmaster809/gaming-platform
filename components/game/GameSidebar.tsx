@@ -13,11 +13,11 @@ export default function GameSidebar({ game }: { game: Game }) {
       <AdBanner slotId="9876543210" format="rectangle" className="w-full" />
 
       <div className="bg-[#1F2937] rounded-xl p-4 border border-[#00D9FF]/10">
-        <h2 className="font-orbitron text-sm font-bold text-[#00D9FF] mb-2">Sobre el juego</h2>
+        <h2 className="font-orbitron text-sm font-bold text-[#00D9FF] mb-2">About this game</h2>
         <p className="text-gray-400 text-sm">{game.description}</p>
         <div className="mt-3 flex flex-wrap gap-2">
           <span className="text-xs bg-[#00D9FF]/10 text-[#00D9FF] px-2 py-1 rounded-full">
-            👥 {game.players} jugadores
+            👥 {game.players} players
           </span>
           {game.tags.map((tag) => (
             <span key={tag} className="text-xs bg-gray-800 text-gray-400 px-2 py-1 rounded-full">
@@ -29,7 +29,7 @@ export default function GameSidebar({ game }: { game: Game }) {
 
       {related.length > 0 && (
         <div>
-          <h3 className="font-orbitron text-sm font-bold text-white mb-3">Juegos similares</h3>
+          <h3 className="font-orbitron text-sm font-bold text-white mb-3">Similar Games</h3>
           <div className="flex flex-col gap-3">
             {related.map((g, i) => (
               <GameCard key={g.slug} game={g} index={i} />
