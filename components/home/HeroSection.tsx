@@ -100,15 +100,28 @@ export default function HeroSection() {
           initial={{ opacity: 0, x: 30, scale: 0.9 }}
           animate={{ opacity: 1, x: 0, scale: 1 }}
           transition={{ delay: 0.2, duration: 0.5, ease: 'easeOut' }}
-          className="hidden lg:block relative w-72 h-72 shrink-0"
+          className="hidden lg:flex shrink-0 items-center justify-center w-80 h-80"
         >
-          <Image
-            src="/mascot.png"
-            alt="PlayHub mascot"
-            fill
-            className="object-contain drop-shadow-[0_0_30px_rgba(0,217,255,0.5)]"
-            priority
-          />
+          {/* Radial glow behind mascot so it reads against any background */}
+          <div className="relative w-full h-full">
+            <div
+              className="absolute inset-0 rounded-full pointer-events-none"
+              style={{
+                background: 'radial-gradient(circle, rgba(0,217,255,0.18) 30%, transparent 70%)',
+              }}
+            />
+            <Image
+              src="/mascot.png"
+              alt="PlayHub mascot"
+              fill
+              priority
+              style={{
+                objectFit: 'contain',
+                mixBlendMode: 'screen',
+                filter: 'drop-shadow(0 0 24px rgba(0,217,255,0.6))',
+              }}
+            />
+          </div>
         </motion.div>
       </div>
     </section>

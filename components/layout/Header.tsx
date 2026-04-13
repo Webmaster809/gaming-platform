@@ -21,7 +21,10 @@ export default function Header() {
             alt={SITE_NAME}
             width={36}
             height={36}
-            className="drop-shadow-[0_0_8px_rgba(0,217,255,0.8)]"
+            style={{
+              mixBlendMode: 'screen',
+              filter: 'drop-shadow(0 0 6px rgba(0,217,255,0.9))',
+            }}
           />
           <span
             className="font-orbitron text-xl font-bold text-[#00D9FF] group-hover:text-white transition-colors"
