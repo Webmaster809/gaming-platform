@@ -1,60 +1,44 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 interface AdBannerProps {
   slotId: string
-  format: 'banner' | 'sidebar' | 'rectangle'
+  format?: 'banner' | 'rectangle'
   className?: string
 }
 
-const formatStyles: Record<AdBannerProps['format'], React.CSSProperties> = {
-  banner: { display: 'block' },
-  sidebar: { display: 'inline-block', width: '300px', height: '600px' },
-  rectangle: { display: 'inline-block', width: '300px', height: '250px' },
-}
+const PUBLISHER_ID = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID
 
-const formatConfig: Record<AdBannerProps['format'], { adFormat?: string; fullWidthResponsive?: boolean }> = {
-  banner: { adFormat: 'auto', fullWidthResponsive: true },
-  sidebar: {},
-  rectangle: {},
-}
-
-export default function AdBanner({ slotId, format, className }: AdBannerProps) {
-  const PUBLISHER_ID = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID
+export default function AdBanner({ slotId, format = 'banner', className }: AdBannerProps) {
+  const pushed = useRef(false)
 
   useEffect(() => {
+    if (pushed.current) return
+    pushed.current = true
     try {
       const w = window as Window & { adsbygoogle?: unknown[] }
       w.adsbygoogle = w.adsbygoogle ?? []
       w.adsbygoogle.push({})
-    } catch {}
+    } catch {
+      // Script not ready yet — AdSense loads it async
+    }
   }, [])
 
-  const isPlaceholder = !PUBLISHER_ID || PUBLISHER_ID === 'ca-pub-XXXXXXXXXX'
+  // Don't render if publisher not configured
+  if (!PUBLISHER_ID || PUBLISHER_ID === 'ca-pub-XXXXXXXXXX') return null
 
-  if (isPlaceholder) {
-    return (
-      <div
-        style={formatStyles[format]}
-        className={['bg-[#1F2937]/50 border border-dashed border-gray-700 flex items-center justify-center text-gray-600 text-xs rounded', className].filter(Boolean).join(' ')}
-      >
-        [Ad — {format}]
-      </div>
-    )
-  }
-
-  const config = formatConfig[format]
+  const isRectangle = format === 'rectangle'
 
   return (
     <div className={className}>
       <ins
         className="adsbygoogle"
-        style={formatStyles[format]}
+        style={{ display: 'block' }}
         data-ad-client={PUBLISHER_ID}
         data-ad-slot={slotId}
-        {...(config.adFormat ? { 'data-ad-format': config.adFormat } : {})}
-        {...(config.fullWidthResponsive ? { 'data-full-width-responsive': 'true' } : {})}
+        data-ad-format={isRectangle ? 'rectangle' : 'auto'}
+        data-full-width-responsive={isRectangle ? 'false' : 'true'}
       />
     </div>
   )

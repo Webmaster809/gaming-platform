@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   description: 'Explore 15+ free online games. No downloads, no registration. FPS, Battle Royale, Puzzle, and more.',
 }
 
+const SLOT_LEADERBOARD = process.env.NEXT_PUBLIC_ADSENSE_SLOT_LEADERBOARD ?? ''
+
 export default function GamesPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
@@ -16,7 +18,11 @@ export default function GamesPage() {
       </h1>
       <p className="text-gray-400 mb-6">{games.length} games available — updated every week</p>
 
-      <AdBanner slotId="5566778899" format="banner" className="h-20 mb-6 w-full" />
+      {SLOT_LEADERBOARD && (
+        <div className="mb-6">
+          <AdBanner slotId={SLOT_LEADERBOARD} format="banner" className="w-full" />
+        </div>
+      )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {games.map((game, i) => (

@@ -10,6 +10,9 @@ interface Props {
   params: Promise<{ slug: string }>
 }
 
+const SLOT_LEADERBOARD = process.env.NEXT_PUBLIC_ADSENSE_SLOT_LEADERBOARD ?? ''
+const SLOT_RECTANGLE   = process.env.NEXT_PUBLIC_ADSENSE_SLOT_RECTANGLE   ?? ''
+
 export async function generateStaticParams() {
   return games.map((game) => ({ slug: game.slug }))
 }
@@ -39,11 +42,22 @@ export default async function GamePage({ params }: Props) {
           {game.title} <span className="text-[#00D9FF]">Online</span>
         </h1>
 
-        <AdBanner slotId="1122334455" format="banner" className="h-20 mb-4 w-full" />
+        {/* Leaderboard above the game */}
+        {SLOT_LEADERBOARD && (
+          <div className="mb-4">
+            <AdBanner slotId={SLOT_LEADERBOARD} format="banner" className="w-full" />
+          </div>
+        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6">
           <GameFrame game={game} />
-          <GameSidebar game={game} />
+          <div className="flex flex-col gap-6">
+            {/* Rectangle ad at top of sidebar */}
+            {SLOT_RECTANGLE && (
+              <AdBanner slotId={SLOT_RECTANGLE} format="rectangle" className="w-[300px] h-[250px]" />
+            )}
+            <GameSidebar game={game} />
+          </div>
         </div>
 
         <section className="mt-10">
