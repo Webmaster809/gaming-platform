@@ -117,7 +117,6 @@ export default function HeroSection() {
               priority
               style={{
                 objectFit: 'contain',
-                mixBlendMode: 'screen',
                 filter: 'drop-shadow(0 0 24px rgba(0,217,255,0.6))',
               }}
             />
