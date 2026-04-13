@@ -10,16 +10,42 @@ interface GameCardProps {
   index?: number
 }
 
+// Neon color per category, matching the card style reference
+const categoryColors: Record<string, string> = {
+  fps:           '#00D9FF',
+  'battle-royale': '#FF006E',
+  puzzle:        '#7C00FF',
+  social:        '#FF00FF',
+  sports:        '#00FF41',
+  classic:       '#FF9500',
+}
+
 export default function GameCard({ game, index = 0 }: GameCardProps) {
+  const neon = categoryColors[game.category] ?? '#00D9FF'
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.05, duration: 0.3, ease: 'easeOut' }}
-      whileHover={{ scale: 1.06 }}
+      whileHover={{ scale: 1.04, y: -4 }}
     >
       <Link href={`/games/${game.slug}`} className="block group">
-        <div className="relative rounded-xl overflow-hidden bg-[#1F2937] border border-[#00D9FF]/10 transition-all duration-200 group-hover:border-[#00D9FF]/60 group-hover:shadow-[0_0_30px_rgba(0,217,255,0.25)]">
+        <div
+          className="relative rounded-xl overflow-hidden bg-[#0A0E27] transition-all duration-200"
+          style={{
+            border: `1px solid ${neon}40`,
+            boxShadow: `0 0 0 0 ${neon}00`,
+          }}
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLDivElement).style.boxShadow = `0 0 24px ${neon}50, 0 0 6px ${neon}30`
+            ;(e.currentTarget as HTMLDivElement).style.borderColor = `${neon}99`
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLDivElement).style.boxShadow = `0 0 0 0 ${neon}00`
+            ;(e.currentTarget as HTMLDivElement).style.borderColor = `${neon}40`
+          }}
+        >
           {/* Thumbnail */}
           <div className="relative aspect-video bg-[#0A0E27]">
             <Image
@@ -33,26 +59,49 @@ export default function GameCard({ game, index = 0 }: GameCardProps) {
                 target.src = '/placeholder-game.svg'
               }}
             />
+
+            {/* Top-right ribbon for trending */}
             {game.trending && (
-              <span className="absolute top-2 left-2 bg-[#FF00FF] text-white text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+              <div
+                className="absolute top-0 right-0 font-orbitron text-[9px] font-black text-white px-3 py-1 uppercase tracking-wider"
+                style={{ background: neon, clipPath: 'polygon(12px 0%, 100% 0%, 100% 100%, 0% 100%)' }}
+              >
                 Trending
-              </span>
+              </div>
             )}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E27] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-            <div className="absolute bottom-2 left-0 right-0 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-              <span className="bg-[#00FF41] text-black text-xs font-bold px-4 py-1 rounded-full">
+
+            {/* Hover overlay */}
+            <div
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center"
+              style={{ background: `linear-gradient(to top, ${neon}50, transparent)` }}
+            >
+              <span
+                className="font-orbitron text-xs font-black text-black px-5 py-1.5 rounded-full"
+                style={{ background: neon }}
+              >
                 ▶ PLAY
               </span>
             </div>
           </div>
+
           {/* Info */}
           <div className="p-3">
-            <h3 className="font-orbitron font-bold text-white text-sm truncate group-hover:text-[#00D9FF] transition-colors">
-              {game.title}
+            {/* Category bar accent */}
+            <div className="h-0.5 w-8 rounded-full mb-2" style={{ background: neon }} />
+            <h3
+              className="font-orbitron font-bold text-white text-sm truncate transition-colors duration-200"
+              style={{ '--neon': neon } as React.CSSProperties}
+            >
+              <span className="group-hover:text-[var(--neon)] transition-colors">
+                {game.title}
+              </span>
             </h3>
             <p className="text-gray-400 text-xs mt-1 line-clamp-2">{game.description}</p>
-            <div className="flex items-center gap-2 mt-2">
-              <span className="text-[10px] text-[#00D9FF] bg-[#00D9FF]/10 px-2 py-0.5 rounded-full">
+            <div className="flex items-center gap-2 mt-2 flex-wrap">
+              <span
+                className="text-[10px] font-medium px-2 py-0.5 rounded-full"
+                style={{ color: neon, background: `${neon}18` }}
+              >
                 👥 {game.players}
               </span>
               {game.tags.slice(0, 2).map((tag) => (

@@ -18,8 +18,29 @@
 
 body {
   background-color: var(--bg);
+  background-image: url('/bg-pattern.png');
+  background-size: 600px 600px;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  /* Subtle overlay so pattern doesn't overpower content */
+  position: relative;
   color: white;
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+}
+
+/* Dim the pattern slightly */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-color: rgba(10, 14, 39, 0.82);
+  pointer-events: none;
+  z-index: 0;
+}
+
+main, header, footer {
+  position: relative;
+  z-index: 1;
 }
 
 .neon-cursor {
