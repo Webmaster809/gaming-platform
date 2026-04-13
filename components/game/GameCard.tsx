@@ -47,12 +47,12 @@ export default function GameCard({ game, index = 0 }: GameCardProps) {
           }}
         >
           {/* Thumbnail */}
-          <div className="relative aspect-video bg-[#0A0E27]">
+          <div className="relative aspect-video bg-[#0A0E27] overflow-hidden">
             <Image
               src={game.thumbnailUrl}
               alt={game.title}
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               onError={(e) => {
                 const target = e.target as HTMLImageElement
